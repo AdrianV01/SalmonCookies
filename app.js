@@ -132,4 +132,3 @@ new Stand('Alki', 2, 16, 4.6);
 // Stand.cookiesPerHour();
 
 // Stand[0].rendertabledata();
-// storeTable();
