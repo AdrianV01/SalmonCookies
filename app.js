@@ -2,7 +2,7 @@
 var storesArray = [];
 var stores = document.getElementById('allStoresGetMoney');
 var arrayTheFirst = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-
+var storeCreator = document.getElementbyId('newStore');
 function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, cookiesAverage) {
 
   this.locationName = locationName;
@@ -12,6 +12,7 @@ function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, coo
   this.cookiesSoldPerHour = [];
   this.randomNumberArray = [];
   this.totalSold = 0;
+
 
   this.calculateRandomCustomerPerHour = function() {
     for (var i = 0; i < arrayTheFirst.length; i++) {
@@ -44,10 +45,11 @@ function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, coo
       trEl.appendChild(tableNumbers);
     }
     stores.appendChild(trEl);
+    function masterHandler(event) {
+      //designfunctionalitytopushsomestufftoanewrow
+    }
   };
-  this.makeFooterContent = function() {
 
-  };
 
 // this.makeHeaderRow();
   this.calculateRandomCustomerPerHour();
@@ -56,9 +58,17 @@ function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, coo
   this.rendertabledata();
   storesArray.push(this);
   console.log (storesArray);
+  //formhandlerhere
+
+
 }
 //*************************END OF CONSTRUCTOR *****************************************
-
+//callfunctionsagain and then throw in an event handler
+this.calculateRandomCustomerPerHour();
+this.cookiesPerHour();
+this.rendertabledata();
+storesArray.push(this);
+newStore.addEventListener('submit', masterHandler);
 function hourHeader() {
   var blankHeader = document.createElement('th');
   stores.appendChild(blankHeader);
