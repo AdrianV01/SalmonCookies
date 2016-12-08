@@ -28,43 +28,46 @@ function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, coo
 
 
 
-    this.rendertabledata = function() {
+  this.rendertabledata = function() {
 
-        var trEl = document.createElement('tr');
-        var headerCell = document.createElement('th');
-        headerCell.textContent = this.locationName;
-        trEl.appendChild(headerCell);
+    var trEl = document.createElement('tr');
+    var headerCell = document.createElement('th');
+    headerCell.textContent = this.locationName;
+    trEl.appendChild(headerCell);
       // var tableNameElements = document.createElement('td');
       // var tableNumbers = document.createElement('td');
       // this.storesNamingFunction();
-      for (var i = 0; i < arrayTheFirst.length; i++) {
-
-        var tableNumbers = document.createElement('td');
+    for (var i = 0; i < arrayTheFirst.length; i++) {
+      var tableNumbers = document.createElement('td');
         // trEl.appendChild(tableNumbers);
-        tableNumbers.textContent = this.cookiesSoldPerHour[i];
-        trEl.appendChild(tableNumbers);
-      }
-      stores.appendChild(trEl);
-    };
+      tableNumbers.textContent = this.cookiesSoldPerHour[i];
+      trEl.appendChild(tableNumbers);
+    }
+    stores.appendChild(trEl);
+  };
+  this.makeFooterContent = function() {
+
+  };
 
 // this.makeHeaderRow();
-this.calculateRandomCustomerPerHour();
-this.cookiesPerHour();
-// this.storesNamingFunction();
-this.rendertabledata();
-storesArray.push(this);
-console.log (storesArray);
-}//*************************END OF CONSTRUCTOR *****************************************
+  this.calculateRandomCustomerPerHour();
+  this.cookiesPerHour();
+  // this.storesNamingFunction();
+  this.rendertabledata();
+  storesArray.push(this);
+  console.log (storesArray);
+}
+//*************************END OF CONSTRUCTOR *****************************************
 
- function hourHeader() {
-var blankHeader = document.createElement('th');
-stores.appendChild(blankHeader);
-for (var i = 0; i < arrayTheFirst.length; i++) {
-var hourlyth = document.createElement('th')
-hourlyth.textContent = arrayTheFirst[i];
-stores.appendChild(hourlyth);
-}
-}
+function hourHeader() {
+  var blankHeader = document.createElement('th');
+  stores.appendChild(blankHeader);
+  for (var i = 0; i < arrayTheFirst.length; i++) {
+    var hourlyth = document.createElement('th')
+    hourlyth.textContent = arrayTheFirst[i];
+    stores.appendChild(hourlyth);
+  }
+};
 hourHeader();
 
 // this.makeHeaderRow = function() {
