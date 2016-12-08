@@ -2,7 +2,7 @@
 var storesArray = [];
 var stores = document.getElementById('allStoresGetMoney');
 var arrayTheFirst = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-
+// var storeCreator = getElementById('newStore');
 function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, cookiesAverage) {
 
   this.locationName = locationName;
@@ -63,7 +63,7 @@ function hourHeader() {
   var blankHeader = document.createElement('th');
   stores.appendChild(blankHeader);
   for (var i = 0; i < arrayTheFirst.length; i++) {
-    var hourlyth = document.createElement('th')
+    var hourlyth = document.createElement('th');
     hourlyth.textContent = arrayTheFirst[i];
     stores.appendChild(hourlyth);
   }
