@@ -3,6 +3,7 @@ var storesArray = [];
 var stores = document.getElementById('allStoresGetMoney');
 var arrayTheFirst = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 // var storeCreator = getElementById('newStore');
+//this is a reference to the form element
 function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, cookiesAverage) {
 
   this.locationName = locationName;
@@ -44,9 +45,10 @@ function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, coo
       trEl.appendChild(tableNumbers);
     }
     stores.appendChild(trEl);
-  };
-  this.makeFooterContent = function() {
-
+    //insertFormHandlerHere
+    //function userCreation(event) {
+    //act like a real function and do something
+  // }
   };
 
 // this.makeHeaderRow();
@@ -58,7 +60,10 @@ function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, coo
   console.log (storesArray);
 }
 //*************************END OF CONSTRUCTOR *****************************************
-
+//callfunctions again and write eventlistener, send form data through constructor, redraw table with the new location, make sure
+//make sure to call functions within the eventhandler
+//storeCreator.addEventListener('submit', function() {
+//handleuserCreation; });
 function hourHeader() {
   var blankHeader = document.createElement('th');
   stores.appendChild(blankHeader);
