@@ -2,7 +2,7 @@
 var storesArray = [];
 var stores = document.getElementById('allStoresGetMoney');
 var arrayTheFirst = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-// var storeCreator = getElementById('newStore');
+var storeCreator = document.getElementById('newStore');
 //this is a reference to the form element
 function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, cookiesAverage) {
 
@@ -19,6 +19,7 @@ function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, coo
       this.randomNumberArray.push(Math.floor(Math.random() * (this.maximumCustomerPerHour - this.minimumCustomerPerHour + 1)) + this.minimumCustomerPerHour);
     }
   };
+
   this.cookiesPerHour = function() {
     this.calculateRandomCustomerPerHour();
     for(var i = 0; i < arrayTheFirst.length; i++) {
@@ -27,43 +28,62 @@ function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, coo
     };
   };
 
-
-
   this.rendertabledata = function() {
-
     var trEl = document.createElement('tr');
     var headerCell = document.createElement('th');
     headerCell.textContent = this.locationName;
     trEl.appendChild(headerCell);
-      // var tableNameElements = document.createElement('td');
-      // var tableNumbers = document.createElement('td');
-      // this.storesNamingFunction();
     for (var i = 0; i < arrayTheFirst.length; i++) {
       var tableNumbers = document.createElement('td');
-        // trEl.appendChild(tableNumbers);
+
       tableNumbers.textContent = this.cookiesSoldPerHour[i];
       trEl.appendChild(tableNumbers);
     }
     stores.appendChild(trEl);
-    //insertFormHandlerHere
-    //function userCreation(event) {
-    //act like a real function and do something
-  // }
+
+
   };
 
-// this.makeHeaderRow();
   this.calculateRandomCustomerPerHour();
   this.cookiesPerHour();
-  // this.storesNamingFunction();
-  this.rendertabledata();
   storesArray.push(this);
-  console.log (storesArray);
+
 }
-//*************************END OF CONSTRUCTOR *****************************************
+//EndofConstructor
+
+function handleUserCreation(event) {
+  event.preventDefault();
+
+var nameofStore = event.target.StoreName.value;
+var minimumAmountOfCookies = event.target.MinimumCookies.value;
+var maximumAmountOfCookies = event.target.MaximumCookies.value;
+var averageAmountOfCookies = event.target.AverageCookies.value;
+
+if ( !nameofStore || !minimumAmountOfCookies || !maximumAmountOfCookies || !averageAmountOfCookies) {
+  alert ('Fill out all required fields!');
+}
+else {
+
+new Stand (nameofStore, minimumAmountOfCookies, maximumAmountOfCookies, averageAmountOfCookies);
+stores.innerHTML = '';
+hourHeader();
+makeTable();
+};
+
+
+
+
+
+
+
+
+
+
+};
+
 //callfunctions again and write eventlistener, send form data through constructor, redraw table with the new location, make sure
 //make sure to call functions within the eventhandler
-//storeCreator.addEventListener('submit', function() {
-//handleuserCreation; });
+
 function hourHeader() {
   var blankHeader = document.createElement('th');
   stores.appendChild(blankHeader);
@@ -73,7 +93,13 @@ function hourHeader() {
     stores.appendChild(hourlyth);
   }
 };
-hourHeader();
+
+function makeTable() {
+  for (var i = 0; i < storesArray.length; i++) {
+    storesArray[i].rendertabledata();
+  }
+}
+
 
 // this.makeHeaderRow = function() {
 //   var trEl = document.createElement('tr');
@@ -88,6 +114,14 @@ new Stand('SeaTacAirport', 3, 24, 1.2);
 new Stand('SeattleCenter', 11, 38, 3.7);
 new Stand('Capitol Hill', 20, 38, 2.3);
 new Stand('Alki', 2, 16, 4.6);
+
+hourHeader();
+makeTable();
+
+
+
+
+storeCreator.addEventListener('submit', handleUserCreation);
 //Make Header Row Section
 
 //
