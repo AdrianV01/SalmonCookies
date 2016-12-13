@@ -2,6 +2,7 @@
 #about {}
 body {
   background-color: darkgreen;}
-  #part1
+  #part1{float: right;}
   #part2
   #part3
+  #yeah {list-style: lower-greek;}
