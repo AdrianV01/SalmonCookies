@@ -3,6 +3,8 @@ var storesArray = [];
 var stores = document.getElementById('allStoresGetMoney');
 var arrayTheFirst = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 var storeCreator = document.getElementById('newStore');
+var total = 0;
+var final = 'Totals';
 //this is a reference to the form element
 function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, cookiesAverage) {
 
@@ -39,6 +41,9 @@ function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, coo
       tableNumbers.textContent = this.cookiesSoldPerHour[i];
       trEl.appendChild(tableNumbers);
     }
+    var tdEl = document.createElement('td');
+    tdEl.textContent = this.totalSold;
+    trEl.appendChild(tdEl);
     stores.appendChild(trEl);
 
 
@@ -54,35 +59,33 @@ function Stand(locationName, minimumCustomerPerHour, maximumCustomerPerHour, coo
 function handleUserCreation(event) {
   event.preventDefault();
 
-var nameofStore = event.target.StoreName.value;
-var minimumAmountOfCookies = event.target.MinimumCookies.value;
-var maximumAmountOfCookies = event.target.MaximumCookies.value;
-var averageAmountOfCookies = event.target.AverageCookies.value;
+  var nameofStore = event.target.StoreName.value;
+  var minimumAmountOfCookies = event.target.MinimumCookies.value;
+  var maximumAmountOfCookies = event.target.MaximumCookies.value;
+  var averageAmountOfCookies = event.target.AverageCookies.value;
 
-if ( !nameofStore || !minimumAmountOfCookies || !maximumAmountOfCookies || !averageAmountOfCookies) {
-  alert ('Fill out all required fields!');
-}
-else {
+  if ( !nameofStore || !minimumAmountOfCookies || !maximumAmountOfCookies || !averageAmountOfCookies) {
+    alert ('Fill out all required fields!');
+  }
+  else {
 
-new Stand (nameofStore, minimumAmountOfCookies, maximumAmountOfCookies, averageAmountOfCookies);
-stores.innerHTML = '';
-hourHeader();
-makeTable();
+    new Stand (nameofStore, minimumAmountOfCookies, maximumAmountOfCookies, averageAmountOfCookies);
+    stores.innerHTML = '';
+    hourHeader();
+    makeTable();
+  };
+
+
+
+
+
+
+
+
+
+
 };
 
-
-
-
-
-
-
-
-
-
-};
-
-//callfunctions again and write eventlistener, send form data through constructor, redraw table with the new location, make sure
-//make sure to call functions within the eventhandler
 
 function hourHeader() {
   var blankHeader = document.createElement('th');
@@ -92,6 +95,14 @@ function hourHeader() {
     hourlyth.textContent = arrayTheFirst[i];
     stores.appendChild(hourlyth);
   }
+  var tableHeader2 = document.createElement('th');
+  tableHeader2.textContent = final;
+  stores.appendChild(tableHeader2);
+
+  // var tdEl = document.createElement('td');
+  // tdEl.textContent = this.totalSold;
+  // trEl.appendChild(tdEl);
+  // stores.appendChild(trEl);
 };
 
 function makeTable() {
