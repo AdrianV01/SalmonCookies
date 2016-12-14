@@ -2,7 +2,7 @@
 #about {}
 body {
   background-color: darkgreen;}
-  #part1{float: right;}
-  #part2
-  #part3
-  #yeah {list-style: lower-greek;}
+  #leftPortion{width: 30%; float: left;}
+  #centralPortion{width: 30%; float: right;}
+  #rightPortion{width: 30%; float: right}
+  #yeah {list-style: upper-roman;}
